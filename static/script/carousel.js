@@ -78,11 +78,34 @@ class Carousel{
 }
 
 
+document.addEventListener('DOMContentLoaded',function(){
+new Carousel(document.querySelector('#carouselbest'),{
+    slidesToScroll: 1,
+    slidesVisible : 4,
+
+})
+})
 
 document.addEventListener('DOMContentLoaded',function(){
 new Carousel(document.querySelector('#carousel1'),{
     slidesToScroll: 1,
-    slidesVisible : 3,
+    slidesVisible : 4,
+
+})
+})
+
+document.addEventListener('DOMContentLoaded',function(){
+new Carousel(document.querySelector('#carousel2'),{
+    slidesToScroll: 1,
+    slidesVisible : 4,
+
+})
+})
+
+document.addEventListener('DOMContentLoaded',function(){
+new Carousel(document.querySelector('#carousel3'),{
+    slidesToScroll: 1,
+    slidesVisible : 4,
 
 })
 })

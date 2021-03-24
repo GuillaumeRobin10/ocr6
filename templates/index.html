@@ -15,8 +15,32 @@
     <div class="c3_r1 middle-left"><a href=#>Catégories</a></div>
     </div>
 </header>
+    <div id="carouselbest">
+        {% for film in best_film %}
+        <div class="itemImage">
+            <img src={{film["image_url"]}} alt="" >
+        </div>
+        {% endfor %}
+
+    </div>
     <div id="carousel1">
         {% for film in films1 %}
+        <div class="itemImage">
+            <img src={{film["image_url"]}} alt="" >
+        </div>
+        {% endfor %}
+
+    </div>
+    <div id="carousel2">
+        {% for film in films2 %}
+        <div class="itemImage">
+            <img src={{film["image_url"]}} alt="" >
+        </div>
+        {% endfor %}
+
+    </div>
+    <div id="carousel3">
+        {% for film in films3 %}
         <div class="itemImage">
             <img src={{film["image_url"]}} alt="" >
         </div>
