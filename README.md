@@ -4,14 +4,10 @@
 
 ## Fonctionnement
 
-afin de lancer site vous devez suivre les étapes indiquées pour votre système d'exploitation
+afin de lancer site vous devez suivre les étapes indiquées pour votre système d'exploitation.
 
-
-
-##installer python
+#### installation annexe
 telecharger [python](https://www.python.org/downloads/ "python") et installez-le en suivant les instructions.
-
-##installer et lancer l'api
 rendez-vous sur  [l'api](https://github.com/OpenClassrooms-Student-Center/OCMovies-API-EN-FR "l'api") , suivez les instructions pour installer l'api et lancez la
 
 
