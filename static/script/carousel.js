@@ -39,6 +39,9 @@ class Carousel{
         if (this.isMobile){
             this.container.style.marginLeft="40%"
         }
+        else{
+            this.container.style.marginLeft="4%"
+        }
     }
     
     createNavigation(){
