@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="{{ url_for('static', filename='style/style.css') }}" />
@@ -32,7 +32,10 @@
             <a id="Bouton">Play</a>
         </div>
         <div class ="c2_r2 img">
-            <img class="js-modal" href=#film{{best_film[0]["id"]}} src={{best_film[0]["image_url"]}}>
+            <a  href =# class="js-modal"> 
+                <img id=#film{{best_film[0]["id"]}} src={{best_film[0]["image_url"]}} alt="">
+            </a>
+            lang="en"
         </div>
         <aside id=film{{best_film[0]["id"]}} class="modal hidden">
             <div class=modal_wrapper>
@@ -68,7 +71,10 @@
     <div id="carouselbest">
         {% for film in best_films %}
             <div class="itemImage">
-                <img class="js-modal" href=#film{{film["id"]}} src={{film["image_url"]}} alt="" >
+                <a class="js-modal" href=#>
+                    <img id=#film{{film["id"]}} src={{film["image_url"]}} alt="" >
+                </a>
+                
             </div>
         {% endfor %}
     </div>
@@ -76,7 +82,9 @@
     <div id="carousel1">
         {% for film in theme1_film %}
         <div class="itemImage">
-            <img class="js-modal" href=#film{{film["id"]}} src={{film["image_url"]}} alt="" >
+            <a class="js-modal" href=#>
+                <img id=#film1{{film["id"]}} src={{film["image_url"]}} alt="" >
+            </a> 
         </div>
         {% endfor %}
     </div>
@@ -84,7 +92,9 @@
     <div id="carousel2">
         {% for film in theme2_film %}
         <div class="itemImage">
-             <img class="js-modal" href=#film{{film["id"]}} src={{film["image_url"]}} alt="" >
+            <a class="js-modal" href=#>
+                <img id=#film2{{film["id"]}} src={{film["image_url"]}} alt="" >
+            </a> 
         </div>
         {% endfor %}
     </div>
@@ -92,7 +102,9 @@
     <div id="carousel3">
         {% for film in theme3_film %}
         <div class="itemImage">
-             <img class="js-modal" href=#film{{film["id"]}} src={{film["image_url"]}} alt="" >
+            <a class="js-modal" href=#>
+                <img id=#film3{{film["id"]}} src={{film["image_url"]}} alt="" >
+            </a> 
         </div>
         {% endfor %}
     </div>
@@ -129,7 +141,7 @@
 {% endfor %}
 
 {% for film_one in theme1_film %}
-        <aside id=film{{film_one["id"]}}  class="modal hidden">
+        <aside id=film1{{film_one["id"]}}  class="modal hidden">
                <div class=modal_wrapper>
                    <button class="js-modal-close"> fermer</button>
                    <p>Titre du film : {{film_one["title"]}}</p>
@@ -161,7 +173,7 @@
 {% endfor %}
 
 {% for film in theme2_film %}
-        <aside id=film{{film["id"]}}  class="modal hidden">
+        <aside id=film2{{film["id"]}}  class="modal hidden">
                <div class=modal_wrapper>
                    <button class="js-modal-close"> fermer</button>
                    <p>Titre du film : {{film["title"]}}</p>
@@ -192,7 +204,7 @@
         </aside>
 {% endfor %}
 {% for film in theme3_film %}
-        <aside id=film{{film["id"]}}  class="modal hidden">
+        <aside id=film3{{film["id"]}}  class="modal hidden">
                <div class=modal_wrapper>
                    <button class="js-modal-close"> fermer</button>
                    <p>Titre du film : {{film["title"]}}</p>
@@ -222,9 +234,9 @@
                </div>
         </aside>
 {% endfor %}
-
-</body>
 <script src="{{ url_for('static', filename='script/modal.js') }}"></script>
+</body>
+
 </html>
 
 
