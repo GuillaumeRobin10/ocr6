@@ -1,6 +1,8 @@
 .carousel {
     position:relative;
     overflow: hidden;
+    
+    
   }
 
 .carouselItem {
@@ -8,11 +10,13 @@
 }
 
 .carouselContainer{
+    margin-left: 4%;
     transition: transform 0.3s;
     transform:translate3d(0,0,0);
 }
 
 .carouselContainer::after{
+    overflow: hidden;
     content: '';
     clear: both;
     display: table;
@@ -32,15 +36,12 @@
 
 }
 .carouselPrev{
+    display: flex;
     background: #fff url(../left-arrow.svg) center center no-repeat;
-    right: auto;
-    left: -20px;
+    left:0px;
+
 }
 
 .carouselNext:hover, .carouselPrev:hover{
     transform: scale(1.2);
-}
-
-.carouselNext--hidden{
-    opacity: 0;
 }

@@ -14,6 +14,7 @@ class Carousel{
 
        },options)
        let children = [].slice.call(element.children)
+       this.isMobile = false
        this.currentItem = 0
        this.root = this.createDivWithClass('carousel')
        this.container = this.createDivWithClass('carouselContainer')
@@ -26,13 +27,18 @@ class Carousel{
            return item
        })
        this.setStyle()
-       this.createNavigation()     
+       this.createNavigation()
+       this.onWindowResize()
+       window.addEventListener('resize', this.onWindowResize.bind(this))
     }
 
     setStyle (){
-        let ratio = this.items.length / this.options.slidesVisible
-        this.container.style.width = (ratio*100) + "%"
-        this.items.forEach(item => item.style.width = ((100/this.options.slidesVisible)/ratio)+"%")   
+        let ratio = this.items.length / this.slidesVisible
+        this.container.style.width = (ratio*100)+4 + "%"
+        this.items.forEach(item => item.style.width = ((100/this.slidesVisible)/ratio)+"%")
+        if (this.isMobile){
+            this.container.style.marginLeft="40%"
+        }
     }
     
     createNavigation(){
@@ -45,25 +51,35 @@ class Carousel{
         
     }
     next (){
-        this.gotoItem(this.currentItem + this.options.slidesToScroll)
+        this.gotoItem(this.currentItem + this.slidesToScroll)
     }
     prev (){
-        this.gotoItem(this.currentItem - this.options.slidesToScroll)
+        this.gotoItem(this.currentItem - this.slidesToScroll)
     }
 
     gotoItem(index){
         if (index <0){
-            index = this.items.length - this.options.slidesVisible
-        }else if (index >= this.items.length || (this.items[this.currentItem + this.options.slidesVisible]===undefined)&& index>this.currentItem){
+            index = this.items.length - this.slidesVisible
+        }else if (index >= this.items.length || (this.items[this.currentItem + this.slidesVisible]===undefined)&& index>this.currentItem){
             index = 0
         }
         let translateX = index * -100 / this.items.length
         this.container.style.transform = 'translate3d(' +translateX + '%,0,0)'
         this.currentItem = index
-        this.moveCallBacks.forEach(cb =>(index))
     }
 
-    
+    onWindowResize(){
+        if (window.innerWidth < 1000 ){
+            this.isMobile = true
+            this.setStyle()
+        }
+        else {
+            this.isMobile = false
+            this.setStyle()
+        }
+        
+    }
+       
     /**
      * 
      * @param {string} className 
@@ -75,6 +91,15 @@ class Carousel{
         div.setAttribute('class',className)
         return div
     }
+
+    get slidesToScroll(){
+        return this.isMobile ?1 : this.options.slidesToScroll
+    }
+    get slidesVisible(){
+        return this.isMobile ?1 : this.options.slidesVisible
+    }
+
+
 }
 
 
