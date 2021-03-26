@@ -8,7 +8,8 @@ afin de lancer site vous devez suivre les étapes indiquées pour votre système
 
 #### installation annexe
 telecharger [python](https://www.python.org/downloads/ "python") et installez-le en suivant les instructions.
-rendez-vous sur  [l'api](https://github.com/OpenClassrooms-Student-Center/OCMovies-API-EN-FR "l'api") , suivez les instructions pour installer l'api et lancez la
+
+rendez-vous sur [l'api](https://github.com/OpenClassrooms-Student-Center/OCMovies-API-EN-FR "l'api") , suivez les instructions pour installer l'api et lancez la.
 
 
 
