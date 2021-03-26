@@ -2,7 +2,7 @@ let modal =null
 
 const openModal = function (e){
     e.preventDefault()
-    const target = document.querySelector(e.target.getAttribute('href'))
+    const target = document.querySelector(e.target.getAttribute('id'))
     target.removeAttribute('class')
     target.setAttribute('class','modal')
     target.style.display = null
@@ -17,8 +17,7 @@ const closeModal = function (e){
     modal.querySelector('.js-modal-close').removeEventListener('click',closeModal)
     modal = null
 }
+
 document.querySelectorAll('.js-modal').forEach(a => {
     a.addEventListener('click',openModal)
-    console.log(a)
-    
 })
