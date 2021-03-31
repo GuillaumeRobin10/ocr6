@@ -1,6 +1,6 @@
 from flask import Flask
-from python.request_api import get_films_info
-from python.setting import HEADERS
+from api.request_api import get_films_info
+from api.setting import HEADERS
 app = Flask(__name__)
 
 
