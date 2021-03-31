@@ -33,9 +33,3 @@ rendez-vous sur [l'api](https://github.com/OpenClassrooms-Student-Center/OCMovie
 7. entrez la commande : ``export FLASK_APP=main.py``
 8. entrez la commande : ``export FLASK_ENV=development``
 9. entrez la commande : ``flask run``
-
-#### installation de l'api
-1. Avec un terminal ouvrez le dossier site web
-2. entrez la commande : ``python -m http.server 4000``
-3. ouvrir le lien générer
-4. selectionner le dossier html
