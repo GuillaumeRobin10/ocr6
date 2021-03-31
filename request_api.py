@@ -3,6 +3,11 @@ from setting import HOME,SETTING
 
 
 def requesting_api(genre, increment=1):
+    """
+    :param genre: gender you want request
+    :param increment: a number
+    :return:
+    """
     SETTING.update({"genre": genre,"page": increment})
     response = requests.get(HOME, params=SETTING)
     if response.ok:
@@ -12,12 +17,21 @@ def requesting_api(genre, increment=1):
 
 
 def get_film_url(films, response):
+    """
+    :param films: a film array
+    :param response: api request
+    :return: an array of films url
+    """
     for film in response["results"]:
         films.append(film["url"])
     return films
 
 
 def get_best_film_of_a_category(genre):
+    """
+    :param genre: gender you want request
+    :return: an array of 10 best films
+    """
     films = []
     for increment in range(1, 3):
         response = requesting_api(genre, increment)
@@ -26,6 +40,10 @@ def get_best_film_of_a_category(genre):
 
 
 def get_films_info(genre=""):
+    """
+    :param genre: gender you want request
+    :return: dict of film information
+    """
     films = get_best_film_of_a_category(genre)
     json_films = {}
     i = 1
