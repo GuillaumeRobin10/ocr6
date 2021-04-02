@@ -1,5 +1,9 @@
-# site web de JustStreamIt
+version de python :3.8.5
 
+ un site web qui permettra aux abonnnés de la plateforme JustStreamIt de visualiser en temps réel des films intéressants.
+ design inspiré de netflix
+
+# site web de JustStreamIt
 
 
 ## Fonctionnement
