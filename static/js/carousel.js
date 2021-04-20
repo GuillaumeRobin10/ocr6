@@ -123,5 +123,5 @@ setTimeout(function(){
         slidesVisible : 4,
     })
 },
-      2000);
+      900);
 

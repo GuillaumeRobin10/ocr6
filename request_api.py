@@ -1,53 +1,65 @@
 import requests
-from setting import HOME,SETTING
 
 
-def requesting_api(genre, increment=1):
-    """
-    :param genre: gender you want request
-    :param increment: a number
-    :return:
-    """
-    SETTING.update({"genre": genre,"page": increment})
-    response = requests.get(HOME, params=SETTING)
-    if response.ok:
-        return response.json()
-    else:
-        print("can't reach api")
 
+class Search:
 
-def get_film_url(films, response):
-    """
-    :param films: a film array
-    :param response: api request
-    :return: an array of films url
-    """
-    for film in response["results"]:
-        films.append(film["url"])
-    return films
+    def __init__(self,url,params={},film_identity=""):
+        """
+        :params genre: gender you want request
+        :params increment: a number
+        """
+        self.url = url
+        self.next_page = ""
+        self.film_identity = film_identity
+        if self.film_identity == "":
+            self.params = {"sort_by": "-imdb_score","format":"json"}
+            self.params.update(params)
+        else:
+            self.params = params
 
+ 
+    def response(self,yes=True):
+        """
+        request api according to the url and params
+        """
+        if yes:
+            response = requests.get(self.url, params=self.params)
+        else:
+            self.url += f"{self.film_identity}"
+            response = requests.get(self.url,params={"format":"json"})
+        if response.ok:
+            return response.json()
+    
 
-def get_best_film_of_a_category(genre):
-    """
-    :param genre: gender you want request
-    :return: an array of 10 best films
-    """
-    films = []
-    for increment in range(1, 3):
-        response = requesting_api(genre, increment)
-        films = get_film_url(films, response)
-    return films
+    def results(self):
+        r = self.response()
+        self.next_page = r["next"]
+        return r["results"]
+    
+    def next(self):
+        """
+        set the next page url
+        """
+        self.url = self.next_page
 
+    @property
+    def get_fils_img(self):
+        """
+        return a list of film id and img
+        """
+        films={}
+        i = 1
+        for y in range(2):
+            result = self.results()
+            for film in result:
+                films.update({f"film{i}":{'film_id':film["id"],'film_img': film["image_url"],'title': film["title"]}})
+                i += 1
+            self.next()
+        return films
+    
+    @property
+    def get_film_info(self):
+        film_info = self.response(yes=False)
+        return film_info
 
-def get_films_info(genre=""):
-    """
-    :param genre: gender you want request
-    :return: dict of film information
-    """
-    films = get_best_film_of_a_category(genre)
-    json_films = {}
-    i = 1
-    for film in films:
-        json_films.update({f"film{i}": requests.get(film).json()})
-        i += 1
-    return json_films
